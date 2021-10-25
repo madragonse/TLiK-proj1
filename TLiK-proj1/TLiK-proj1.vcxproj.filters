@@ -18,5 +18,13 @@
     <ClCompile Include="TLiK-proj1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LettersCounter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LettersCounter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

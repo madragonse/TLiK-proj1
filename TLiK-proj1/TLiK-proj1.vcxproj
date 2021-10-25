@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LettersCounter.cpp" />
     <ClCompile Include="TLiK-proj1.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LettersCounter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
