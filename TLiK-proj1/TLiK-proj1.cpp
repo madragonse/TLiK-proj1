@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
+#include <string>
 
-int main()
+
+void proj1(std::string filename = "ENG_1.txt")
 {
 	std::ifstream inputFile;
 	size_t size = 0;
@@ -11,7 +13,7 @@ int main()
 	float charPropability[256] = { 0 };
 	int charDataSize[256] = { 0 };
 
-	inputFile.open("ENG_1.txt", std::ios::in | std::ios::binary | std::ios::ate);
+	inputFile.open(filename, std::ios::in | std::ios::binary | std::ios::ate);
 	char* inp;
 
 	inputFile.seekg(0, std::ios::end);
@@ -23,7 +25,6 @@ int main()
 	inp[size] = '\0';
 
 	int wholeCount = 0;
-	//print data
 	for (size_t i = 0; i < strlen(inp); i++)
 	{
 		char t = inp[i];
@@ -45,18 +46,20 @@ int main()
 		charDataSize[i] = (int)ceil(log2(1 / charPropability[i]));
 	}
 
-	printf("\nAll letters counts\n");
-	for (int i = 0; i < 256; i++) {
-		printf("Char: %d (%c) - %d\n", i, i, charAmount[i]);
-	}
+	//printf("\nAll letters counts\n");
+	//for (int i = 0; i < 256; i++) {
+	//	printf("Char: %d (%c) - %d\n", i, i, charAmount[i]);
+	//}
 
 	printf("\nAll letters propability\n");
 	for (int i = 0; i < 256; i++) {
+		if (charPropability[i] != 0)
 		printf("Char: %d (%c) - %f\n", i, i, charPropability[i]);
 	}
 
 	printf("\nAll letters data size in bits\n");
 	for (int i = 0; i < 256; i++) {
+		if (charPropability[i] != 0)
 		printf("Char: %d (%c) - %d\n", i, i, charDataSize[i]);
 	}
 
@@ -68,13 +71,23 @@ int main()
 		{
 			messageEntropy += charPropability[i] * charDataSize[i];
 		}
-		
+
 	}
 
 
-	printf("All letters count: %d\n", wholeCount);
+	printf("\nAll letters count: %d\n", wholeCount);
 	printf("Message entopy: %f\n", messageEntropy);
+}
 
+
+int main()
+{
+	printf("\nText in polish language--------------------\n");
+	proj1("POL_LIT_1.txt");
+	printf("\nText in english language-------------------\n");
+	proj1("ENG_1.txt");
+	printf("\nPolish text thematically IT-------------------\n");
+	proj1("POL_INF_1.txt");
 	getchar();
 	return 0;
 }
